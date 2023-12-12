@@ -6,7 +6,9 @@ require_once("./Entities/product.class.php");
 require_once("./Entities/category.class.php");
 $cates = Category::list_category();
 //khoi dong session
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 //Hien thi loi
 error_reporting(E_ALL);
 ini_set('display_error','1');
@@ -91,7 +93,7 @@ if(isset($_GET["id"])){
                         echo "<tr><td>".$prod["ProductName"]."</td><td><img style='width:90px; height:80px' src=".$prod["Picture"]."/></td><td>".$item["quantity"]."</td><td>".$prod["Price"]."</td><td>".$prod["Price"]."</td></tr>";
                     }
                     echo "<tr><td colspan=5><p class='text-right text-danger'>Tong tien: ".$total_money."</p></td></tr>";
-                    echo "<tr><td colspan=3><p class='text-right '><button type='button' class='btn btn-primary'>Tiep tuc mua hang</button></p></td></tr>";
+                    echo "<tr><td colspan=3><p class='text-right '><button type='button' class='btn btn-primary'>Tiep tuc mua hang</button></p></td><td colspan=2><p class='text-right'><button type='button' class='btn btn-success'>Thanh toan</button></p></td></tr>";
 
                 }else{
                     echo"Khong co san phan nao trong gio hang!";

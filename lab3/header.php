@@ -35,7 +35,9 @@
         <div id="logo-bg">
             <h1>Trang Suc DOJI</h1>
             <span class="tag">Company Slogan will come here</span>
+
         </div>
+        
         <div id="business"></div>
         <div class="clear"></div>
         <div id="bg">
@@ -48,4 +50,13 @@
             <div class="toplinks"><a href="./add_product.php">Them san pham</a></div>
             <div class="sap">|</div>
             <div class="toplinks"><a href="#">Contact us</a></div>
+            <div><?php
+        session_start();
+        if(isset($_SESSION['user'])!=""){
+            echo "<h2>Xin chao: ".$_SESSION['user']."<a href='./logout.php'>Logout</a></h2>";
+        } 
+        else{
+            echo "<h2>Ban chua dang nhap <a href='./login.php'>Login</a> - <a href='./register.php'>Register</a></h2>";
+        }
+        ?></div>
         </div>
