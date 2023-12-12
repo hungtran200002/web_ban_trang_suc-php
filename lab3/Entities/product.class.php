@@ -46,6 +46,25 @@ class Product{
         return $result;
     }
     //lay danh sach theo loai san pham
-    public static function list_product_by_cateid($cateid){}
+    public static function list_product_by_cateid($cateid){
+        $db = new Db();
+        $sql = "SELECT * FROM product WHERE CateID='$cateid'";
+        $result = $db->select_to_array($sql);
+        return $result;
+    }
+    //lay danh sach san pham cung loai
+    public static function list_product_relate($cateid,$id){
+        $db = new Db();
+        $sql = "SELECT * FROM product WHERE CateID='$cateid' AND productID!='$id'";
+        $result = $db->select_to_array($sql);
+        return $result;
+    }
+    //lay 1 san pham
+    public static function get_product($id){
+        $db = new Db();
+        $sql = "SELECT * FROM product WHERE productID='$id'";
+        $result = $db->select_to_array($sql);
+        return $result;
+    }
 }
 ?>
